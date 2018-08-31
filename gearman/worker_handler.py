@@ -32,7 +32,7 @@ class GearmanWorkerCommandHandler(GearmanCommandHandler):
     ##### Public interface methods to be called by GearmanWorker #####
     ##################################################################
     def set_abilities(self, connection_abilities_list):
-        assert type(connection_abilities_list) in (list, tuple)
+        assert isinstance(connection_abilities_list, (list, tuple, type({None: None}.keys())))
         self._handler_abilities = connection_abilities_list
 
         self.send_command(GEARMAN_COMMAND_RESET_ABILITIES)
